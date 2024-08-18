@@ -17,6 +17,7 @@ return {
     vim.keymap.set('n', '<leader>fg', builtin.git_bcommits)
     vim.keymap.set('n', '<leader>fh', builtin.help_tags)
     vim.keymap.set('n', '<leader>fk', builtin.keymaps)
+    vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find)
 
     -- Shortcut for searching Neovim configuration files
     vim.keymap.set('n', '<leader>fv', function()

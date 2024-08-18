@@ -1,5 +1,5 @@
 require('andrei-zgirvaci/lazy')
-require('andrei-zgirvaci/set')
+require('andrei-zgirvaci/options')
 require('andrei-zgirvaci/remap')
 
 local autocmd = vim.api.nvim_create_autocmd

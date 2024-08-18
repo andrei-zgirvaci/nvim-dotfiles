@@ -18,7 +18,9 @@ return {
         preview = true
       }
     })
-    vim.keymap.set('n', '<leader>e', function() MiniFiles.open() end)
+    vim.keymap.set('n', '<leader><leader>', function()
+      MiniFiles.open(vim.api.nvim_buf_get_name(0))
+    end)
     
     require('mini.git').setup()
     require('mini.icons').setup()

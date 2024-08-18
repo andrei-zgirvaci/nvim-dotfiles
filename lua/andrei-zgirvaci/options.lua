@@ -23,7 +23,16 @@ vim.opt.cmdheight = 0          -- Hide the command line by default (useful if yo
 -- Live substitution preview
 vim.opt.inccommand = 'split'   -- Show the effect of :substitute as you type the command
 
+-- Search settings
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 -- Persistent undo
 local undodir_path = os.getenv('HOME') .. '/.vim/undodir' 
 vim.opt.undodir = undodir_path -- Set the directory where undo files will be stored
 vim.opt.undofile = true        -- Save undo history to an undo file, enabling persistent undo across sessions
+
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
