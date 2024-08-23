@@ -1,36 +1,37 @@
 -- Enable line numbers
-vim.opt.number = true          -- Show absolute line numbers
-vim.opt.relativenumber = true  -- Show relative line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Highlight the current line
-vim.opt.cursorline = true      -- Highlight the line where the cursor is located
+vim.opt.cursorline = true
 
 -- Set tab and indentation options
-vim.opt.tabstop = 2            -- Number of spaces that a <Tab> in the file counts for
-vim.opt.softtabstop = 2        -- Number of spaces that a <Tab> counts for while editing
-vim.opt.shiftwidth = 2         -- Number of spaces to use for each step of (auto)indent
-vim.opt.expandtab = true       -- Convert tabs to spaces
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- Scroll options
-vim.opt.scrolloff = 10         -- Minimum number of screen lines to keep above and below the cursor
-
--- Sign column
-vim.opt.signcolumn = 'yes'     -- Always show the sign column, to prevent text shifting
+vim.opt.scrolloff = 10
 
 -- Command line height
-vim.opt.cmdheight = 0          -- Hide the command line by default (useful if you want to maximize the screen space)
+vim.opt.cmdheight = 0
 
 -- Live substitution preview
-vim.opt.inccommand = 'split'   -- Show the effect of :substitute as you type the command
+vim.opt.inccommand = 'split'
 
 -- Search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Sets how neovim will display certain whitespace characters in the editor
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
 -- Persistent undo
 local undodir_path = os.getenv('HOME') .. '/.vim/undodir' 
-vim.opt.undodir = undodir_path -- Set the directory where undo files will be stored
-vim.opt.undofile = true        -- Save undo history to an undo file, enabling persistent undo across sessions
+vim.opt.undodir = undodir_path
+vim.opt.undofile = true
 
 -- Sync clipboard between OS and Neovim.
 vim.schedule(function()

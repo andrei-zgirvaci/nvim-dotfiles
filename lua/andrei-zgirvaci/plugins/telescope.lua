@@ -7,7 +7,14 @@ return {
     { 'nvim-tree/nvim-web-devicons', lazy = true }
   },
   config = function()
-    require('telescope').setup()
+    require('telescope').setup({
+      defaults = { 
+        file_ignore_patterns = { 
+          'lazy%-lock%.json',
+          '%.lock'
+        }
+      }
+    })
 
     local builtin = require('telescope.builtin')
     vim.keymap.set('n', '<C-p>', builtin.git_files)
