@@ -15,7 +15,7 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 
 -- Command line height
-vim.opt.cmdheight = 0
+vim.opt.showmode = false
 
 -- Live substitution preview
 vim.opt.inccommand = 'split'
@@ -23,6 +23,9 @@ vim.opt.inccommand = 'split'
 -- Search settings
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Keep signcolumn
+vim.opt.signcolumn = 'yes'
 
 -- Sets how neovim will display certain whitespace characters in the editor
 vim.opt.list = true

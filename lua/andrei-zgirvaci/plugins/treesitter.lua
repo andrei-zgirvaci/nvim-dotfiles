@@ -1,26 +1,25 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  version = false,
+  version = '*',
   build = ':TSUpdate',
-  event = 'VeryLazy',
+  event = 'VimEnter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
-  config = function()
-    require('nvim-treesitter.configs').setup({
-      auto_install = true,
-      highlight = { enable = true },
-      indent = { enable = true },
+  opts = {
+    auto_install = true,
+    highlight = { enable = true },
+    indent = { enable = true },
 
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = '<c-space>',
-          node_incremental = '<c-space>',
-          scope_incremental = '<c-s>',
-          node_decremental = '<c-backspace>',
-        }
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = '<c-space>',
+        node_incremental = '<c-space>',
+        scope_incremental = '<c-s>',
+        node_decremental = '<c-backspace>',
       }
-    })
-  end
+    }
+  },
+  main = 'nvim-treesitter.configs'
 }

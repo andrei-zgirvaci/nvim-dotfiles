@@ -3,22 +3,13 @@ function setColor(color)
 end
 
 return {
-  'ellisonleao/gruvbox.nvim',
+  'gbprod/nord.nvim',
+  version = '*',
   lazy = false,
   priority = 1000,
   config = function()
-    setColor('gruvbox')
-  end,
-  opts = {
-    contrast = 'soft',
-  },
+    require('nord').setup()
 
-  -- 'gbprod/nord.nvim',
-  -- lazy = false,
-  -- priority = 1000,
-  -- config = function()
-  --   require('nord').setup()
-  --
-  --   setColor('nord')
-  -- end,
+    setColor('nord')
+  end,
 }
