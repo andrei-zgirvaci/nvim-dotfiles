@@ -1,16 +1,15 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  version = '*',
+  version = false,
   build = ':TSUpdate',
-  lazy = false,
-  -- event = 'VimEnter',
-  dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  },
   opts = {
-   ensure_installed = {
-      "lua",
+    ensure_installed = {
+      'lua',
+      'javascript',
+      'typescript',
+      'tsx'
     },
+    sync_install = true,
 
     auto_install = true,
     highlight = { enable = true },

@@ -1,40 +1,34 @@
 return {
   'nvim-treesitter/nvim-treesitter-textobjects',
-  lazy = false,
+  branch = 'main',
+  event = 'VeryLazy',
   opts = {
-    textobjects = {
-      move = {
-        enable = true,
-        set_jumps = true,
-        goto_next_start = {
-          [']f'] = '@function.outer',
-          [']a'] = '@parameter.inner'
-        },
-        goto_next_end = { 
-          [']F'] = '@function.outer', 
-          [']A'] = '@parameter.inner' 
-        },
-        goto_previous_start = { 
-          ['[f'] = '@function.outer',
-          ['[a'] = '@parameter.inner'
-        },
-        goto_previous_end = { 
-          ['[F'] = '@function.outer', 
-          ['[A'] = '@parameter.inner' },
-      },
-
-      swap = {
-        enable = true,
-        swap_next = {
-          ['<leader>a'] = '@parameter.inner',
-          ['<leader>nf'] = '@function.outer',
-        },
-        swap_previous = {
-          ['<leader>A'] = '@parameter.inner',
-          ['<leader>pf'] = '@function.outer',
-        },
-      },
+    move = {
+      set_jumps = true,
     },
   },
-  main = 'nvim-treesitter.configs'
+  keys = function()
+    local move = require('nvim-treesitter-textobjects.move')
+    local swap = require('nvim-treesitter-textobjects.swap')
+
+    return {
+      { mode = { 'n' }, ']f', function() move.goto_next_start('@function.outer', 'textobjects') end },
+      { mode = { 'n' }, ']a', function() move.goto_next_start('@parameter.inner', 'textobjects') end },
+
+      { mode = { 'n' }, ']F', function() move.goto_next_end('@function.outer', 'textobjects') end },
+      { mode = { 'n' }, ']A', function() move.goto_next_end('@parameter.inner', 'textobjects') end },
+
+      { mode = { 'n' }, '[f', function() move.goto_previous_start('@function.outer', 'textobjects') end },
+      { mode = { 'n' }, '[a', function() move.goto_previous_start('@parameter.inner', 'textobjects') end },
+
+      { mode = { 'n' }, '[F', function() move.goto_previous_end('@function.outer', 'textobjects') end },
+      { mode = { 'n' }, '[A', function() move.goto_previous_end('@parameter.inner', 'textobjects') end },
+
+      { mode = { 'n' }, '<leader>a', function() swap.swap_next('@parameter.inner') end },
+      { mode = { 'n' }, '<leader>nf', function() swap.swap_next('@function.outer') end },
+
+      { mode = { 'n' }, '<leader>A', function() swap.swap_previous('@parameter.inner') end },
+      { mode = { 'n' }, '<leader>pf', function() swap.swap_previous('@function.outer') end },
+    }
+  end
 }
