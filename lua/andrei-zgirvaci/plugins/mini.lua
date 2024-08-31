@@ -6,7 +6,7 @@ return {
     local mini_files = require('mini.files')
 
     return {
-      { '<leader><leader>', mode = { 'n' }, function() mini_files.open(vim.api.nvim_buf_get_name(0)) end },
+      { mode = { 'n' }, '<leader><leader>', function() mini_files.open(vim.api.nvim_buf_get_name(0)) end },
     }
   end,
   config = function()

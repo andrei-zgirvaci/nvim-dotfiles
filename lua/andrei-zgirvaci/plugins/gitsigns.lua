@@ -4,6 +4,6 @@ return {
   event = 'VimEnter',
   opts = {},
   keys = {
-    { '<leader>gl', mode = { 'n' }, function() require('gitsigns').blame_line{full=true} end },
+    { mode = { 'n' }, '<leader>gl', function() require('gitsigns').blame_line{full=true} end },
   }
 }

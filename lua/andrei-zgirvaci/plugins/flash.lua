@@ -18,8 +18,8 @@ return {
     local flash = require('flash')
 
     return {
-      { 'z', mode = { 'n', 'o' }, function() flash.jump() end },
-      { 'Z', mode = { 'n', 'o' }, function() flash.treesitter() end },
+      { mode = { 'n', 'o' }, 'z', function() flash.jump() end },
+      { mode = { 'n', 'o' }, 'Z', function() flash.treesitter() end },
     }
   end
 }

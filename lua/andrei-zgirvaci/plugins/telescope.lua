@@ -18,17 +18,17 @@ return {
     local builtin = require('telescope.builtin')
 
     return {
-      { '<C-p>', builtin.git_files },
-      { '<leader>ff', builtin.find_files },
-      { '<leader>fs', builtin.live_grep },
-      { '<leader>fw', builtin.grep_string },
-      { '<leader>fg', builtin.git_bcommits },
-      { '<leader>fh', builtin.help_tags },
-      { '<leader>fk', builtin.keymaps },
-      { '<leader>/', builtin.current_buffer_fuzzy_lesfind },
+      { mode = { 'n' }, '<C-p>', builtin.git_files },
+      { mode = { 'n' }, '<leader>ff', builtin.find_files },
+      { mode = { 'n' }, '<leader>fs', builtin.live_grep },
+      { mode = { 'n' }, '<leader>fw', builtin.grep_string },
+      { mode = { 'n' }, '<leader>fg', builtin.git_bcommits },
+      { mode = { 'n' }, '<leader>fh', builtin.help_tags },
+      { mode = { 'n' }, '<leader>fk', builtin.keymaps },
+      { mode = { 'n' }, '<leader>/', builtin.current_buffer_fuzzy_lesfind },
 
       -- Shortcut for searching Neovim configuration files
-      { '<leader>fv', mode = { 'n' },  function() builtin.find_files({ cwd = vim.fn.stdpath 'config' }) end }
+      { mode = { 'n' }, '<leader>fv',  function() builtin.find_files({ cwd = vim.fn.stdpath 'config' }) end }
     }
   end
 }
