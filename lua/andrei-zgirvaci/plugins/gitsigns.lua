@@ -3,7 +3,12 @@ return {
   version = '*',
   event = 'VimEnter',
   opts = {},
-  keys = {
-    { mode = { 'n' }, '<leader>gl', function() require('gitsigns').blame_line{full=true} end },
-  }
+  keys = function()
+    local gitsigns = require('gitsigns')
+
+    return {
+      { mode = { 'n' }, '<leader>gl', function() gitsigns.blame_line({full=true}) end },
+      { mode = { 'n' }, '<leader>gd', function() gitsigns.diffthis() end },
+    }
+  end
 }
