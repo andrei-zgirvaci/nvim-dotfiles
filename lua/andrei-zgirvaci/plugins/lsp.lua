@@ -64,7 +64,7 @@ return {
         group = vim.api.nvim_create_augroup('lsp-format-on-save', {}),
         pattern = "*",
         callback = function()
-          vim.lsp.buf.format({ async = true })
+          vim.lsp.buf.format()
         end,
       })
     end
@@ -95,6 +95,18 @@ return {
             lspconfig[server_name].setup({
               capabilities = capabilities
             })
+          end,
+
+          ["lua_ls"] = function()
+            lspconfig.lua_ls.setup {
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" }
+                  }
+                }
+              }
+            }
           end,
         }
       }
