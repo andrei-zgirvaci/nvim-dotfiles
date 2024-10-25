@@ -3,7 +3,7 @@ return {
   lazy = false,
   priority = 999,
   dependencies = { 
-    { 'nvim-tree/nvim-web-devicons', lazy = true }
+    { 'nvim-tree/nvim-web-devicons', lazy = false }
   },
   opts = {}
 }
