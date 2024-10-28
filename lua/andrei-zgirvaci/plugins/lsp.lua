@@ -14,11 +14,11 @@ return {
       local lspconfig = require("lspconfig")
 
       vim.diagnostic.config({
-        virtual_text = false,
-        severity_sort = true,
-        signs = false,
+        -- virtual_text = false,
+        -- severity_sort = true,
+        -- signs = false,
         float = {
-          border = "rounded",
+          -- border = "rounded",
           header = "",
           prefix = "",
         },
@@ -47,11 +47,11 @@ return {
           vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
 
           vim.keymap.set('n', 'gd', telescope.lsp_definitions, opts)
-          vim.keymap.set('n', '<leader>vr', telescope.lsp_references, opts)
-          vim.keymap.set('n', '<leader>vi', telescope.lsp_implementations, opts)
-          vim.keymap.set('n', '<leader>vt', telescope.lsp_type_definitions, opts)
-          vim.keymap.set('n', '<leader>ds', telescope.lsp_document_symbols, opts)
-          vim.keymap.set('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, opts)
+          -- vim.keymap.set('n', '<leader>vr', telescope.lsp_references, opts)
+          -- vim.keymap.set('n', '<leader>vi', telescope.lsp_implementations, opts)
+          -- vim.keymap.set('n', '<leader>vt', telescope.lsp_type_definitions, opts)
+          -- vim.keymap.set('n', '<leader>ds', telescope.lsp_document_symbols, opts)
+          -- vim.keymap.set('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, opts)
 
           vim.keymap.set('n', 'gD', function() vim.lsp.buf.declarations() end, opts)
           vim.keymap.set({ 'i', 'n' }, '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
@@ -60,13 +60,13 @@ return {
         end,
       })
 
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = vim.api.nvim_create_augroup('lsp-format-on-save', {}),
-        pattern = "*",
-        callback = function()
-          vim.lsp.buf.format()
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   group = vim.api.nvim_create_augroup('lsp-format-on-save', {}),
+      --   pattern = "*",
+      --   callback = function()
+      --     vim.lsp.buf.format()
+      --   end,
+      -- })
     end
   },
   {
@@ -89,6 +89,7 @@ return {
           'lua_ls',
           'ts_ls',
           'eslint',
+          'zls'
         },
         handlers = {
           function(server_name)
@@ -113,8 +114,33 @@ return {
     end
   },
   {
-    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    "folke/trouble.nvim",
     version = '*',
-    opts = {}
+    opts = {},
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+    },
   }
 }
