@@ -35,7 +35,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.swapfile = false
 
 -- Persistent undo
-local undodir_path = os.getenv('HOME') .. '/.vim/undodir'
+local undodir_path = os.getenv('HOME') .. '/.nvim/undodir'
 vim.opt.undodir = undodir_path
 vim.opt.undofile = true
 
@@ -43,6 +43,3 @@ vim.opt.undofile = true
 vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
-
--- Decrease update time
-vim.opt.updatetime = 250

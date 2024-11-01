@@ -1,1 +1,0 @@
-/Users/andreizgirvaci/Library/Mobile Documents/com~apple~CloudDocs/Mackup/.config/nvim/init.vim

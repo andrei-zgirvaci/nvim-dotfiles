@@ -19,6 +19,10 @@ return {
       { mode = { 'n' }, '<C-e>3', function() harpoon:list():select(3) end },
       { mode = { 'n' }, '<C-e>4', function() harpoon:list():select(4) end },
       { mode = { 'n' }, '<C-e>5', function() harpoon:list():select(5) end },
+      { mode = { 'n' }, '<C-e>6', function() harpoon:list():select(6) end },
+      { mode = { 'n' }, '<C-e>7', function() harpoon:list():select(7) end },
+      { mode = { 'n' }, '<C-e>8', function() harpoon:list():select(8) end },
+      { mode = { 'n' }, '<C-e>9', function() harpoon:list():select(9) end },
     }
   end
 }

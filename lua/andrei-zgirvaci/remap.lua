@@ -6,7 +6,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzz')
 vim.keymap.set('n', 'N', 'Nzz')
 vim.keymap.set('n', 'J', 'm`J``')
-vim.keymap.set('n', '=', 'gg=G``')
+vim.keymap.set('n', '<leader>=', 'gg=G``')
 
 -- Replace word
 vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])

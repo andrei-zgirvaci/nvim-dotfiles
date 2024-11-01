@@ -7,6 +7,28 @@ return {
     opts = {}
   },
   {
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        swift = { 'swift_format' },
+      },
+      formatters = {
+        swift_format = {
+          command = 'swift',
+          args = { 'format', '$FILENAME', '--in-place' },
+        },
+      },
+    },
+    keys = function()
+      local conform = require('conform')
+
+      return {
+        { mode = { 'n' }, '=', function() conform.format({ lsp_fallback = true }) end },
+      }
+    end
+  },
+  {
     'neovim/nvim-lspconfig',
     version = '*',
     lazy = true,
@@ -59,14 +81,6 @@ return {
           vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
         end,
       })
-
-      -- vim.api.nvim_create_autocmd("BufWritePre", {
-      --   group = vim.api.nvim_create_augroup('lsp-format-on-save', {}),
-      --   pattern = "*",
-      --   callback = function()
-      --     vim.lsp.buf.format()
-      --   end,
-      -- })
     end
   },
   {
@@ -89,7 +103,8 @@ return {
           'lua_ls',
           'ts_ls',
           'eslint',
-          'zls'
+          'zls',
+          'clangd'
         },
         handlers = {
           function(server_name)
