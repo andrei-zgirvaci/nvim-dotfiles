@@ -2,7 +2,13 @@ return {
   'echasnovski/mini.files',
   version = '*',
   event = 'VeryLazy',
-  opts = {
+  opts =
+  {
+    content = {
+      filter = function(fs_entry)
+        return fs_entry.name ~= '.DS_Store'
+      end,
+    },
     mappings = {
       synchronize = '<CR>'
     },
