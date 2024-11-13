@@ -7,7 +7,8 @@ return {
     local gitsigns = require('gitsigns')
 
     return {
-      { mode = { 'n' }, '<leader>gl', function() gitsigns.blame_line({full=true}) end },
+      { mode = { 'n' }, '<leader>gl', function() gitsigns.preview_hunk() end },
+      { mode = { 'n' }, '<leader>gh', function() gitsigns.toggle_deleted() end },
       { mode = { 'n' }, '<leader>gd', function() gitsigns.diffthis() end },
     }
   end

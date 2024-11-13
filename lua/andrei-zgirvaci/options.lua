@@ -40,6 +40,6 @@ vim.opt.undodir = undodir_path
 vim.opt.undofile = true
 
 -- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- vim.schedule(function()
+--   vim.opt.clipboard = 'unnamedplus'
+-- end)

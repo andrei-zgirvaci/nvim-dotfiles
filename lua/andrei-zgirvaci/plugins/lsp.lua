@@ -79,7 +79,7 @@ return {
           -- vim.keymap.set('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, opts)
 
           vim.keymap.set('n', 'gD', function() vim.lsp.buf.declarations() end, opts)
-          vim.keymap.set({ 'i', 'n' }, '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
+          vim.keymap.set({ 'i', 'n' }, '<leader-h>', function() vim.lsp.buf.signature_help() end, opts)
           vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
           vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
         end,
