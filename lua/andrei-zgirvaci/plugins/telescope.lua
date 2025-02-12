@@ -3,11 +3,16 @@ return {
   version = '*',
   event = 'VeryLazy',
   dependencies = {
+    {
+      'nvim-telescope/telescope-fzf-native.nvim',
+      build = 'make',
+    },
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons'
   },
   opts = {
     defaults = {
+      path_display = { "truncate" },
       file_ignore_patterns = {
         'lazy%-lock%.json',
         "%.jpg",
@@ -16,21 +21,32 @@ return {
         '%.git/',
         '%.lock',
         'yarn%-.+%.cjs'
-      }
+      },
+      -- vimgrep_arguments = {
+      --   -- "rg",
+      --   -- "--files-with-matches", -- Only show file paths
+      --   -- "--no-heading",
+      --   -- "--hidden",
+      --   -- "--follow"
+      -- }
     },
     pickers = {
       find_files = {
-        hidden = true,
+        -- hidden = true,
       },
       live_grep = {
-        additional_args = { '--hidden' }
+        -- additional_args = { '--hidden' }
       },
       grep_string = {
-        additional_args = { '--hidden' }
+        -- additional_args = { '--hidden' }
       }
     }
   },
-  config = function()
+  config = function(_, opts)
+    local telescope = require('telescope')
+
+    telescope.setup(opts)
+
     vim.api.nvim_create_autocmd("User", {
       pattern = "TelescopePreviewerLoaded",
       callback = function()
@@ -42,11 +58,12 @@ return {
     local builtin = require('telescope.builtin')
 
     return {
-      { mode = { 'n' }, '<leader>fr', builtin.resume },
+      { mode = { 'n' }, '<leader>fb', builtin.buffers },
       { mode = { 'n' }, '<leader>ff', builtin.find_files },
+      { mode = { 'n' }, '<leader>fr', builtin.resume },
       { mode = { 'n' }, '<leader>fs', builtin.live_grep },
       { mode = { 'n' }, '<leader>fw', builtin.grep_string },
-      { mode = { 'n' }, '<leader>fg', builtin.git_bcommits },
+      { mode = { 'n' }, '<leader>fc', builtin.git_bcommits },
       { mode = { 'n' }, '<leader>fh', builtin.help_tags },
       { mode = { 'n' }, '<leader>fk', builtin.keymaps },
       { mode = { 'n' }, '<leader>/',  builtin.current_buffer_fuzzy_lesfind },

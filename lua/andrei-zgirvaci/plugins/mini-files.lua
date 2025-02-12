@@ -1,7 +1,6 @@
 return {
   'echasnovski/mini.files',
   version = '*',
-  event = 'VeryLazy',
   opts =
   {
     content = {
@@ -10,7 +9,7 @@ return {
       end,
     },
     mappings = {
-      synchronize = '<CR>'
+      go_in_plus  = '<CR>',
     },
     options = {
       permanent_delete = false
