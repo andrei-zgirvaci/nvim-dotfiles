@@ -40,6 +40,19 @@ vim.opt.undodir = undodir_path
 vim.opt.undofile = true
 
 -- Sync clipboard between OS and Neovim.
--- vim.schedule(function()
---   vim.opt.clipboard = 'unnamedplus'
--- end)
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
+
+-- Character width line marker
+vim.opt.colorcolumn = "80"
+
+-- Spell check
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+
+vim.filetype.add({
+  extension = {
+    mdx = "markdown",
+  }
+})
