@@ -34,9 +34,14 @@ return {
   {
     'neovim/nvim-lspconfig',
     version = '*',
-    lazy = true,
+    lazy = false,
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp'
+    },
     config = function()
-      local lspconfig = require("lspconfig")
+      local capabilities = require('cmp_nvim_lsp').default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
 
       vim.diagnostic.config({
         -- virtual_text = false,
@@ -49,8 +54,11 @@ return {
         },
       })
 
-      -- Swift
-      lspconfig.sourcekit.setup {
+      vim.lsp.config('*', {
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config('sourcekit', {
         capabilities = {
           workspace = {
             didChangeWatchedFiles = {
@@ -58,7 +66,19 @@ return {
             },
           },
         },
-      }
+      })
+
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { 'vim' }
+            }
+          }
+        }
+      })
+
+      vim.lsp.enable('sourcekit')
 
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('lsp-attach', {}),
@@ -68,8 +88,8 @@ return {
           local telescope = require('telescope.builtin')
 
           vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-          vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-          vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+          vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+          vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
 
           vim.keymap.set('n', 'gd', telescope.lsp_definitions, opts)
           vim.keymap.set('n', '<leader>vr', telescope.lsp_references, opts)
@@ -78,7 +98,7 @@ return {
           vim.keymap.set('n', '<leader>ds', telescope.lsp_document_symbols, opts)
           vim.keymap.set('n', '<leader>ws', telescope.lsp_dynamic_workspace_symbols, opts)
 
-          vim.keymap.set('n', 'gD', function() vim.lsp.buf.declarations() end, opts)
+          vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
           vim.keymap.set({ 'i', 'n' }, '<leader>xh', function() vim.lsp.buf.signature_help() end, opts)
           vim.keymap.set('n', '<leader>rn', function() vim.lsp.buf.rename() end, opts)
           vim.keymap.set('n', '<leader>ca', function() vim.lsp.buf.code_action() end, opts)
@@ -90,45 +110,17 @@ return {
     'williamboman/mason-lspconfig.nvim',
     version = '*',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp'
+      'neovim/nvim-lspconfig'
     },
-    opts = function()
-      local lspconfig = require("lspconfig")
-
-      local capabilities = vim.tbl_deep_extend(
-        'force',
-        vim.lsp.protocol.make_client_capabilities(),
-        require('cmp_nvim_lsp').default_capabilities()
-      )
-
-      return {
-        ensure_installed = {
-          'lua_ls',
-          'ts_ls',
-          'eslint',
-          'zls',
-        },
-        handlers = {
-          function(server_name)
-            lspconfig[server_name].setup({
-              capabilities = capabilities
-            })
-          end,
-
-          ["lua_ls"] = function()
-            lspconfig.lua_ls.setup {
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim" }
-                  }
-                }
-              }
-            }
-          end,
-        }
-      }
-    end
+    opts = {
+      ensure_installed = {
+        'lua_ls',
+        'ts_ls',
+        'eslint',
+        'zls',
+      },
+      automatic_enable = true,
+    }
   },
   {
     "folke/trouble.nvim",

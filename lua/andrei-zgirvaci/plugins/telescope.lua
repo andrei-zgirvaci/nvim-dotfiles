@@ -66,7 +66,7 @@ return {
       { mode = { 'n' }, '<leader>fc', builtin.git_bcommits },
       { mode = { 'n' }, '<leader>fh', builtin.help_tags },
       { mode = { 'n' }, '<leader>fk', builtin.keymaps },
-      { mode = { 'n' }, '<leader>/',  builtin.current_buffer_fuzzy_lesfind },
+      { mode = { 'n' }, '<leader>/',  builtin.current_buffer_fuzzy_find },
 
       -- Shortcut for searching Neovim configuration files
       { mode = { 'n' }, '<leader>fv', function() builtin.find_files({ cwd = vim.fn.stdpath 'config' }) end }
