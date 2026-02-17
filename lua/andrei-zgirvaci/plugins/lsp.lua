@@ -62,13 +62,13 @@ return {
           vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
           vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
 
-          vim.keymap.set('n', 'gd', function() require('telescope.builtin').lsp_definitions() end, opts)
+          vim.keymap.set('n', 'gd', function() require('fzf-lua').lsp_definitions() end, opts)
           vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
-          vim.keymap.set('n', '<leader>vr', function() require('telescope.builtin').lsp_references() end, opts)
-          vim.keymap.set('n', '<leader>vi', function() require('telescope.builtin').lsp_implementations() end, opts)
-          vim.keymap.set('n', '<leader>vt', function() require('telescope.builtin').lsp_type_definitions() end, opts)
-          vim.keymap.set('n', '<leader>ds', function() require('telescope.builtin').lsp_document_symbols() end, opts)
-          vim.keymap.set('n', '<leader>ws', function() require('telescope.builtin').lsp_dynamic_workspace_symbols() end, opts)
+          vim.keymap.set('n', '<leader>vr', function() require('fzf-lua').lsp_references() end, opts)
+          vim.keymap.set('n', '<leader>vi', function() require('fzf-lua').lsp_implementations() end, opts)
+          vim.keymap.set('n', '<leader>vt', function() require('fzf-lua').lsp_typedefs() end, opts)
+          vim.keymap.set('n', '<leader>ds', function() require('fzf-lua').lsp_document_symbols() end, opts)
+          vim.keymap.set('n', '<leader>ws', function() require('fzf-lua').lsp_workspace_symbols() end, opts)
         end,
       })
     end
