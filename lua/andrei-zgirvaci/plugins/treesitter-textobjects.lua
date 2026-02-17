@@ -1,34 +1,32 @@
 return {
   'nvim-treesitter/nvim-treesitter-textobjects',
   branch = 'main',
-  event = 'VeryLazy',
   opts = {
     move = {
       set_jumps = true,
     },
   },
-  keys = function()
-    local move = require('nvim-treesitter-textobjects.move')
-    local swap = require('nvim-treesitter-textobjects.swap')
+  keys = {
+    -- Function navigation
+    { mode = { 'n', 'x', 'o' }, ']f', function() require('nvim-treesitter-textobjects.move').goto_next_start('@function.outer', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, '[f', function() require('nvim-treesitter-textobjects.move').goto_previous_start('@function.outer', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, ']F', function() require('nvim-treesitter-textobjects.move').goto_next_start('@function.inner', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, '[F', function() require('nvim-treesitter-textobjects.move').goto_previous_start('@function.inner', 'textobjects') end },
 
-    return {
-      { mode = { 'n' }, ']f', function() move.goto_next_start('@function.outer', 'textobjects') end },
-      { mode = { 'n' }, ']a', function() move.goto_next_start('@parameter.inner', 'textobjects') end },
+    -- Arguments navigation
+    { mode = { 'n', 'x', 'o' }, ']a', function() require('nvim-treesitter-textobjects.move').goto_next_start('@parameter.inner', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, '[a', function() require('nvim-treesitter-textobjects.move').goto_previous_start('@parameter.inner', 'textobjects') end },
 
-      { mode = { 'n' }, ']F', function() move.goto_next_end('@function.outer', 'textobjects') end },
-      { mode = { 'n' }, ']A', function() move.goto_next_end('@parameter.inner', 'textobjects') end },
+    -- Block navigation
+    { mode = { 'n', 'x', 'o' }, ']b', function() require('nvim-treesitter-textobjects.move').goto_next_start('@block.outer', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, '[b', function() require('nvim-treesitter-textobjects.move').goto_previous_start('@block.outer', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, ']B', function() require('nvim-treesitter-textobjects.move').goto_next_start('@block.inner', 'textobjects') end },
+    { mode = { 'n', 'x', 'o' }, '[B', function() require('nvim-treesitter-textobjects.move').goto_previous_start('@block.inner', 'textobjects') end },
 
-      { mode = { 'n' }, '[f', function() move.goto_previous_start('@function.outer', 'textobjects') end },
-      { mode = { 'n' }, '[a', function() move.goto_previous_start('@parameter.inner', 'textobjects') end },
-
-      { mode = { 'n' }, '[F', function() move.goto_previous_end('@function.outer', 'textobjects') end },
-      { mode = { 'n' }, '[A', function() move.goto_previous_end('@parameter.inner', 'textobjects') end },
-
-      { mode = { 'n' }, '<leader>a', function() swap.swap_next('@parameter.inner') end },
-      { mode = { 'n' }, '<leader>nf', function() swap.swap_next('@function.outer') end },
-
-      { mode = { 'n' }, '<leader>A', function() swap.swap_previous('@parameter.inner') end },
-      { mode = { 'n' }, '<leader>pf', function() swap.swap_previous('@function.outer') end },
-    }
-  end
+    -- Swap
+    { mode = { 'n' }, '<leader>sa', function() require('nvim-treesitter-textobjects.swap').swap_next('@parameter.inner') end },
+    { mode = { 'n' }, '<leader>sA', function() require('nvim-treesitter-textobjects.swap').swap_previous('@parameter.inner') end },
+    { mode = { 'n' }, '<leader>sf', function() require('nvim-treesitter-textobjects.swap').swap_next('@function.outer') end },
+    { mode = { 'n' }, '<leader>sF', function() require('nvim-treesitter-textobjects.swap').swap_previous('@function.outer') end },
+  }
 }

@@ -23,6 +23,12 @@ vim.keymap.set('n', '<C-S-L>', '<C-w>5>')
 vim.keymap.set('n', '<C-S-J>', '<C-w>+')
 vim.keymap.set('n', '<C-S-K>', '<C-w>-')
 
+-- Open URL/file under cursor
+vim.keymap.set('n', '<leader>gx', function()
+  local target = vim.fn.expand('<cfile>')
+  pcall(vim.ui.open, target)
+end)
+
 -- Clear search highlights
 vim.keymap.set('n', '<Esc>', function() vim.cmd('nohlsearch') end)
 

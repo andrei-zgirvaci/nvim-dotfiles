@@ -49,7 +49,7 @@ vim.opt.colorcolumn = "80"
 
 -- Spell check
 vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
+vim.opt.spell = false
 
 vim.filetype.add({
   extension = {

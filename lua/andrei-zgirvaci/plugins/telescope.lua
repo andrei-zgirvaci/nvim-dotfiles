@@ -1,7 +1,6 @@
 return {
   'nvim-telescope/telescope.nvim',
   version = '*',
-  event = 'VeryLazy',
   dependencies = {
     {
       'nvim-telescope/telescope-fzf-native.nvim',
@@ -12,30 +11,25 @@ return {
   },
   opts = {
     defaults = {
-      path_display = { "truncate" },
+      path_display = { 'filename_first' },
       file_ignore_patterns = {
         'lazy%-lock%.json',
         "%.jpg",
         "%.png",
         "%.webp",
+        "%.svg",
+        "%.xml",
         '%.git/',
         '%.lock',
         'yarn%-.+%.cjs'
       },
-      -- vimgrep_arguments = {
-      --   -- "rg",
-      --   -- "--files-with-matches", -- Only show file paths
-      --   -- "--no-heading",
-      --   -- "--hidden",
-      --   -- "--follow"
-      -- }
     },
     pickers = {
       find_files = {
         -- hidden = true,
       },
       live_grep = {
-        -- additional_args = { '--hidden' }
+        additional_args = { '--hidden', '--fixed-strings' }
       },
       grep_string = {
         -- additional_args = { '--hidden' }
@@ -54,22 +48,18 @@ return {
       end,
     })
   end,
-  keys = function()
-    local builtin = require('telescope.builtin')
+  keys = {
+    { mode = { 'n' }, '<leader>ff', function() require('telescope.builtin').find_files() end },
+    { mode = { 'n' }, '<leader>fb', function() require('telescope.builtin').buffers() end },
+    { mode = { 'n' }, '<leader>fs', function() require('telescope.builtin').live_grep() end },
+    { mode = { 'n' }, '<leader>fw', function() require('telescope.builtin').grep_string() end },
+    { mode = { 'n' }, '<leader>fr', function() require('telescope.builtin').resume() end },
+    { mode = { 'n' }, '<leader>fc', function() require('telescope.builtin').git_bcommits() end },
+    { mode = { 'n' }, '<leader>fh', function() require('telescope.builtin').help_tags() end },
+    { mode = { 'n' }, '<leader>fk', function() require('telescope.builtin').keymaps() end },
+    { mode = { 'n' }, '<leader>/',  function() require('telescope.builtin').current_buffer_fuzzy_find() end },
 
-    return {
-      { mode = { 'n' }, '<leader>fb', builtin.buffers },
-      { mode = { 'n' }, '<leader>ff', builtin.find_files },
-      { mode = { 'n' }, '<leader>fr', builtin.resume },
-      { mode = { 'n' }, '<leader>fs', builtin.live_grep },
-      { mode = { 'n' }, '<leader>fw', builtin.grep_string },
-      { mode = { 'n' }, '<leader>fc', builtin.git_bcommits },
-      { mode = { 'n' }, '<leader>fh', builtin.help_tags },
-      { mode = { 'n' }, '<leader>fk', builtin.keymaps },
-      { mode = { 'n' }, '<leader>/',  builtin.current_buffer_fuzzy_find },
-
-      -- Shortcut for searching Neovim configuration files
-      { mode = { 'n' }, '<leader>fv', function() builtin.find_files({ cwd = vim.fn.stdpath 'config' }) end }
-    }
-  end
+    -- Shortcut for searching Neovim configuration files
+    { mode = { 'n' }, '<leader>fv', function() require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') }) end }
+  }
 }

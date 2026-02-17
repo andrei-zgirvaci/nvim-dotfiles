@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.files',
+  'nvim-mini/mini.files',
   version = '*',
   opts =
   {
@@ -12,17 +12,14 @@ return {
       go_in_plus  = '<CR>',
     },
     options = {
-      permanent_delete = false
+      permanent_delete = false,
+      use_as_default_explorer = false,
     },
     windows = {
       preview = true
     }
   },
-  keys = function()
-    local mini_files = require('mini.files')
-
-    return {
-      { mode = { 'n' }, '<leader><leader>', function() mini_files.open(vim.api.nvim_buf_get_name(0)) end },
-    }
-  end
+  keys = {
+    { mode = { 'n' }, '<leader><leader>', function() require('mini.files').open(vim.api.nvim_buf_get_name(0)) end },
+  }
 }

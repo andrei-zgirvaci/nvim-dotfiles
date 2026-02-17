@@ -3,14 +3,10 @@ return {
   branch = 'main',
   lazy = true,
   opts = {},
-  keys = function()
-    local spider = require('spider')
-
-    return {
-      { mode = { 'n', 'o', 'x' }, '<leader>w',  function() spider.motion('w') end },
-      { mode = { 'n', 'o', 'x' }, '<leader>b',  function() spider.motion('b') end },
-      { mode = { 'n', 'o', 'x' }, '<leader>e',  function() spider.motion('e') end },
-      { mode = { 'n', 'o', 'x' }, '<leader>ge', function() spider.motion('ge') end },
-    }
-  end
+  keys = {
+    { mode = { 'n', 'o', 'x' }, '<leader>w',  function() require('spider').motion('w') end },
+    { mode = { 'n', 'o', 'x' }, '<leader>b',  function() require('spider').motion('b') end },
+    { mode = { 'n', 'o', 'x' }, '<leader>e',  function() require('spider').motion('e') end },
+    { mode = { 'n', 'o', 'x' }, '<leader>ge', function() require('spider').motion('ge') end },
+  }
 }
