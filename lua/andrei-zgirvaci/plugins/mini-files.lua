@@ -9,11 +9,10 @@ return {
       end,
     },
     mappings = {
-      go_in_plus  = '<CR>',
+      go_in_plus = '<CR>',
     },
     options = {
       permanent_delete = false,
-      use_as_default_explorer = false,
     },
     windows = {
       preview = true

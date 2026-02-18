@@ -1,7 +1,6 @@
 return {
   'chrisgrieser/nvim-spider',
   branch = 'main',
-  lazy = true,
   opts = {},
   keys = {
     { mode = { 'n', 'o', 'x' }, '<leader>w',  function() require('spider').motion('w') end },

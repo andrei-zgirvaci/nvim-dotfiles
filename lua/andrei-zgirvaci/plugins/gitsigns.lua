@@ -1,7 +1,7 @@
 return {
   'lewis6991/gitsigns.nvim',
   version = '*',
-  event = 'VimEnter',
+  event = { 'BufReadPre', 'BufNewFile' },
   opts = {},
   keys = {
     { mode = { 'n' }, '<leader>gl', function() require('gitsigns').preview_hunk() end },

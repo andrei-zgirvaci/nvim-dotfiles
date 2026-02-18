@@ -85,7 +85,7 @@ return {
         'bashls',
         'ts_ls',
         'eslint',
-        'kotlin_language_server',
+        'kotlin_lsp',
       },
       automatic_enable = true,
     }
