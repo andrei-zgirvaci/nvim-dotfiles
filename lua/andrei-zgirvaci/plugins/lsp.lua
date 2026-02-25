@@ -14,6 +14,8 @@ return {
         javascriptreact = { "prettierd" },
         typescript = { "prettierd" },
         typescriptreact = { "prettierd" },
+        markdown = { "prettierd" },
+        json = { "prettierd" },
         swift = { 'swift_format' },
       },
       formatters = {

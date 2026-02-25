@@ -16,7 +16,10 @@ return {
     { mode = { 'n' }, '<leader>/', function() require('fzf-lua').blines() end },
 
     -- Shortcut for searching Neovim configuration files.
-    { mode = { 'n' }, '<leader>fv', function() require('fzf-lua').files({ cwd = vim.fn.stdpath('config') }) end },
+    { mode = { 'n' }, '<leader>fV', function() require('fzf-lua').files({ cwd = vim.fn.stdpath('config') }) end },
+
+    -- Shortcut for searching Dot files.
+    { mode = { 'n' }, '<leader>fD', function() require('fzf-lua').files({ cwd = vim.fn.expand('~/Developer/dotfiles') }) end },
 
     -- Shortcut for searching Fish configuration files.
     { mode = { 'n' }, '<leader>fC', function() require('fzf-lua').files({ cwd = vim.fn.expand('~/.config') }) end }
