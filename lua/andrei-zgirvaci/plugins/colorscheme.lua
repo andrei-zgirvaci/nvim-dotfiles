@@ -1,7 +1,6 @@
 return {
   -- {
   --   'sainnhe/everforest',
-  --   branch = 'master',
   --   lazy = false,
   --   priority = 1000,
   --   config = function()
@@ -12,7 +11,6 @@ return {
   -- },
   {
     "sainnhe/gruvbox-material",
-    branch = 'master',
     lazy = false,
     priority = 1000,
     config = function()

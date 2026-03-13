@@ -1,8 +1,7 @@
 return {
   'ibhagwan/fzf-lua',
-  version = '*',
   dependencies = {
-    'nvim-tree/nvim-web-devicons'
+    'nvim-tree/nvim-web-devicons',
   },
   opts = {},
   keys = {
@@ -13,7 +12,7 @@ return {
     { mode = { 'n' }, '<leader>fr', function() require('fzf-lua').resume() end },
     { mode = { 'n' }, '<leader>fc', function() require('fzf-lua').git_bcommits() end },
     { mode = { 'n' }, '<leader>fh', function() require('fzf-lua').helptags() end },
-    { mode = { 'n' }, '<leader>/', function() require('fzf-lua').blines() end },
+    { mode = { 'n' }, '<leader>/',  function() require('fzf-lua').blines() end },
 
     -- Shortcut for searching Neovim configuration files.
     { mode = { 'n' }, '<leader>fV', function() require('fzf-lua').files({ cwd = vim.fn.stdpath('config') }) end },

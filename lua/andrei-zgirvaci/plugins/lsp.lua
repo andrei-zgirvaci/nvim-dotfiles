@@ -1,7 +1,6 @@
 return {
   {
     'mason-org/mason.nvim',
-    version = '*',
     cmd = 'Mason',
     build = ':MasonUpdate',
     opts = {}
@@ -31,7 +30,6 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
-    version = '*',
     lazy = false,
     config = function()
       vim.diagnostic.config({
@@ -77,7 +75,6 @@ return {
   },
   {
     'mason-org/mason-lspconfig.nvim',
-    version = '*',
     dependencies = {
       'neovim/nvim-lspconfig'
     },

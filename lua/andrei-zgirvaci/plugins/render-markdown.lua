@@ -1,6 +1,5 @@
 return {
   'MeanderingProgrammer/render-markdown.nvim',
-  version = '*',
   event = { 'BufReadPost', 'BufNewFile' },
   ft = { "markdown" },
   dependencies = { 'nvim-tree/nvim-web-devicons' },

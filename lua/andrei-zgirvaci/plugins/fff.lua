@@ -1,0 +1,30 @@
+return {
+  --   'dmtrKovalenko/fff.nvim',
+  --   lazy = false,
+  --   build = function()
+  --     require('fff.download').download_or_build_binary()
+  --   end,
+  --   opts = {
+  --     layout = {
+  --       height = 0.8,
+  --       width = 0.8,
+  --       flex = {
+  --         wrap = 'bottom',
+  --       },
+  --     }
+  --   },
+  --   keys = {
+  --     { mode = { 'n' }, '<leader>ff', function() require('fff').find_files() end },
+  --     { mode = { 'n' }, '<leader>fs', function() require('fff').live_grep({ grep = { modes = { 'fuzzy', 'plain' } } }) end },
+  --     { mode = { 'n' }, '<leader>fw', function() require('fff').live_grep({ query = vim.fn.expand('<cword>') }) end },
+  --
+  --     -- Shortcut for searching Neovim configuration files.
+  --     { mode = { 'n' }, '<leader>fV', function() require('fff').find_files_in_dir(vim.fn.stdpath('config')) end },
+  --
+  --     -- Shortcut for searching Dot files.
+  --     { mode = { 'n' }, '<leader>fD', function() require('fff').find_files_in_dir(vim.fn.expand('~/Developer/dotfiles')) end },
+  --
+  --     -- Shortcut for searching Fish configuration files.
+  --     { mode = { 'n' }, '<leader>fC', function() require('fff').find_files_in_dir(vim.fn.expand('~/.config')) end },
+  --   },
+}

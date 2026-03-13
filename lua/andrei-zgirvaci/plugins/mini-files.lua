@@ -1,6 +1,5 @@
 return {
   'nvim-mini/mini.files',
-  version = '*',
   opts =
   {
     content = {
