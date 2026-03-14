@@ -62,13 +62,13 @@ return {
           vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
           vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
 
-          vim.keymap.set('n', 'gd', function() require('fzf-lua').lsp_definitions() end, opts)
+          vim.keymap.set('n', 'gd', function() Snacks.picker.lsp_definitions() end, opts)
           vim.keymap.set('n', 'gD', function() vim.lsp.buf.declaration() end, opts)
-          vim.keymap.set('n', '<leader>vr', function() require('fzf-lua').lsp_references() end, opts)
-          vim.keymap.set('n', '<leader>vi', function() require('fzf-lua').lsp_implementations() end, opts)
-          vim.keymap.set('n', '<leader>vt', function() require('fzf-lua').lsp_typedefs() end, opts)
-          vim.keymap.set('n', '<leader>ds', function() require('fzf-lua').lsp_document_symbols() end, opts)
-          vim.keymap.set('n', '<leader>ws', function() require('fzf-lua').lsp_workspace_symbols() end, opts)
+          vim.keymap.set('n', '<leader>vr', function() Snacks.picker.lsp_references() end, opts)
+          vim.keymap.set('n', '<leader>vi', function() Snacks.picker.lsp_implementations() end, opts)
+          vim.keymap.set('n', '<leader>vt', function() Snacks.picker.lsp_type_definitions() end, opts)
+          vim.keymap.set('n', '<leader>ds', function() Snacks.picker.lsp_symbols() end, opts)
+          vim.keymap.set('n', '<leader>ws', function() Snacks.picker.lsp_workspace_symbols() end, opts)
         end,
       })
     end

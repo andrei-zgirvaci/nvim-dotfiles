@@ -9,7 +9,7 @@ vim.keymap.set('n', 'J', 'm`J``')
 vim.keymap.set('n', '<leader>=', 'gg=G``')
 
 -- Replace word
-vim.keymap.set('n', '<leader>r', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
+vim.keymap.set('n', '<leader>rr', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gIc<Left><Left><Left><Left>]])
 
 -- Window navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>')
