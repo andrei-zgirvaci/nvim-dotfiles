@@ -1,6 +1,6 @@
 # Neovim
 
-![nvim](https://github.com/user-attachments/assets/11d1c25f-f6be-49f0-ac26-68d62c78f682)
+![](https://i.imgur.com/TUYkwAb.jpeg)
 
 ## Vim keybindings
 
@@ -152,4 +152,3 @@
 
 - [ ] Show a list of git changes files
 - [ ] On git diff, focus on the previous commit window, to be able to close it easier
-
